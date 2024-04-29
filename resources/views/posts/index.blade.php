@@ -6,7 +6,12 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
-    <body>
+    
+    <x-app-layout>
+        <x-slot name="header">
+            index
+        </x-slot>
+        <body>
         <h1>Blog Name</h1>
         <a href="/posts/create">create</a>
         <div class='posts'>
@@ -23,6 +28,12 @@
                 </div>
             @endforeach
         </div>
+        
+        <div class="loginuser">
+                <p>ログインユーザー:{{ Auth::user()->name }}</p>    
+        </div>
+            
+        
         <div class='paginate'>{{ $posts->links() }}</div>
         <script>
             function deletePost(id){
@@ -34,4 +45,6 @@
             }
         </script>
     </body>
+    </x-app-layout>
+    
 </html>
